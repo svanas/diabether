@@ -1,0 +1,956 @@
+object frmMain: TfrmMain
+  Left = 0
+  Top = 0
+  Caption = 'Diabether'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 2
+  object TC: TTabControl
+    Align = Client
+    Size.Width = 640.000000000000000000
+    Size.Height = 480.000000000000000000
+    Size.PlatformDefault = False
+    TabHeight = 49.000000000000000000
+    TabIndex = 0
+    TabOrder = 0
+    TabPosition = PlatformDefault
+    Sizes = (
+      640s
+      431s
+      640s
+      431s
+      640s
+      431s)
+    object tabCalculate: TTabItem
+      CustomIcon = <
+        item
+          Width = 32
+          Height = 32
+          PNG = {
+            89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+            F4000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+            035E494441545847E5964B48546114C7EF9D87E51865D014EDC636658BC42808
+            F2412D2A2A080217B52A0B8A288836418E902F82E801522D22D25615D1A24592
+            45A5569210BD16C640284CD803947C344C8DF3E877EEFD46D4D1EB37898BF00F
+            C773CE7FBEFB9D73CF77BE7335E63D4CA5A782595D5D7D0E7D0059613159221E
+            8FF77B3C9EDB2E97EB544D4D4D5CD113E0523A03C160701FEA34F24FC105045F
+            863A4122876C2613D326609AE67A655A18181888A17EEAC8F0F0F06FF418D86B
+            A33233E0513A03A954CACD8369FB96DFEFAFA48C498B98196655555523A53F6E
+            39A6E9B6D829306D05C6838D5AB3082E48F14C8BB21DA1954032994C29531BBA
+            CF68253097F83F12A08902CAD4063DB04A998E98761031072E13F8A472479156
+            6E43D47667440ECFEE402FB05DA3B9AEAEEEA0B22740F708BCC86E36ADD0943D
+            AC4F0777846E0229BAFA05D2A37C0B54E423F256B916581346B5757474685D5B
+            DD042E34343494315A8B1289C477C575BADDEEE2FAFAFA0D046D55DC106B8A29
+            F796D2D2D2B38A73846E025FE50FC32842D021B179F36F6A38A528B9F53BC945
+            BABBBBADDF419FD28ED06AC2582C36E8F57AAFE1AFC1DD2B9C94B8A4A4E43A66
+            9C8E3F82963E11B4C8B1B05638BF4DCDB209737272F2D9F00CA6155C50565646
+            5CD75144E67D3AB860276B83E8747047E81E81A1BE7013C66B381C966FBC5CD1
+            C9D0BDAE7A0950D27BF9F9F94BD085B823366B840281C04A2AB01CFB9D4D197F
+            F08B91C5D8CD36E50CAD04D8F0090D17A3E343B89F6DD6E882EB4706B905AF84
+            40F7E1BF47E21CC3236BD50CD09D8421363F865F845CC437A3D1E82F9FCF7718
+            7E14EE06DC5259489582F82FD18DE875C281594FC2D554E1291B5EC2B692CECD
+            CD5D44903B70F771ADE002FC7A54DBB8E08ED06EC2B9826E021F28F566DEAA32
+            3D62653650815DF0DB717F08076464CBB5DCC450EAB22967E8DE822B8CE2CEDA
+            DADA26EEBFD5F10CA60734650BFC637EBF6B2D348C1EFCAB9C77174726C73523
+            B49A90000F19C1FB79BBC24824F22C2F2FCF07DD4B90ADE8386FDBCADAB5D8A3
+            ACD9C6F7E00DDC4DB80A791E64DF843C9C50A6D8526A99F1AF557041015C2FF2
+            4505177849EA39DCC8B8E0F202637B4D8653025A67A8894EA53330EDFFEBEDED
+            ED9FCACBCB17621620F206328AB31569D4A65028749EAF64D6FF59CF0718C65F
+            C8577B87E0D11C2F0000000049454E44AE426082}
+        end>
+      IsSelected = True
+      Size.Width = 320.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'tabitemcustom'
+      TabOrder = 0
+      Text = 'Calculate'
+      ExplicitSize.cx = 213.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+      object TB: TToolBar
+        Size.Width = 640.000000000000000000
+        Size.Height = 44.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object GB: TGroupBox
+          Align = HorzCenter
+          Position.X = 160.000000000000000000
+          Size.Width = 320.000000000000000000
+          Size.Height = 44.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+          object btnAuto: TSpeedButton
+            StaysPressed = True
+            Align = MostLeft
+            GroupName = 'TOD'
+            IsPressed = True
+            Position.Y = 8.000000000000000000
+            Size.Width = 80.000000000000000000
+            Size.Height = 29.000000000000000000
+            Size.PlatformDefault = False
+            StyleLookup = 'toolbuttonleft'
+            Text = 'Automatic'
+            OnClick = tbClick
+          end
+          object btnDay: TSpeedButton
+            StaysPressed = True
+            Align = Right
+            GroupName = 'TOD'
+            Position.X = 160.000000000000000000
+            Position.Y = 8.000000000000000000
+            Size.Width = 80.000000000000000000
+            Size.Height = 29.000000000000000000
+            Size.PlatformDefault = False
+            StyleLookup = 'toolbuttonmiddle'
+            Text = 'Day'
+            OnClick = tbClick
+          end
+          object btnEvening: TSpeedButton
+            StaysPressed = True
+            Align = MostRight
+            GroupName = 'TOD'
+            Position.X = 240.000000000000000000
+            Position.Y = 8.000000000000000000
+            Size.Width = 80.000000000000000000
+            Size.Height = 29.000000000000000000
+            Size.PlatformDefault = False
+            StyleLookup = 'toolbuttonright'
+            Text = 'Evening'
+            OnClick = tbClick
+          end
+          object btnMorning: TSpeedButton
+            StaysPressed = True
+            Align = Left
+            GroupName = 'TOD'
+            Position.X = 80.000000000000000000
+            Position.Y = 8.000000000000000000
+            Size.Width = 80.000000000000000000
+            Size.Height = 29.000000000000000000
+            Size.PlatformDefault = False
+            StyleLookup = 'toolbuttonmiddle'
+            Text = 'Morning'
+            OnClick = tbClick
+          end
+        end
+      end
+      object Line1: TLine
+        Align = Top
+        LineType = Top
+        Margins.Left = 8.000000000000000000
+        Margins.Right = 8.000000000000000000
+        Position.X = 8.000000000000000000
+        Position.Y = 124.000000000000000000
+        Size.Width = 624.000000000000000000
+        Size.Height = 50.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object lblUnits: TLabel
+        Align = Top
+        StyledSettings = [Family, FontColor]
+        Position.Y = 44.000000000000000000
+        Size.Width = 640.000000000000000000
+        Size.Height = 80.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 60.000000000000000000
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+        TextSettings.HorzAlign = Center
+        Text = '0'
+        TabOrder = 1
+      end
+      object GL: TGridPanelLayout
+        Anchors = [akTop]
+        Position.X = 8.000000000000000000
+        Position.Y = 136.000000000000000000
+        Size.Width = 624.000000000000000000
+        Size.Height = 110.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 3
+        ColumnCollection = <
+          item
+            Value = 50.000000000000000000
+          end
+          item
+            SizeStyle = Absolute
+            Value = 100.000000000000000000
+          end
+          item
+            Value = 50.000000000000000000
+          end>
+        ControlCollection = <
+          item
+            Column = 0
+            Control = lblGlucoseLeft
+            Row = 0
+          end
+          item
+            Column = 1
+            Control = rctGlucose
+            Row = 0
+          end
+          item
+            Column = 2
+            Control = lblGlucoseRight
+            Row = 0
+          end
+          item
+            Column = 0
+            Control = lblCarbsLeft
+            Row = 1
+          end
+          item
+            Column = 1
+            Control = rctCarbs
+            Row = 1
+          end
+          item
+            Column = 2
+            Control = lblCarbsRight
+            Row = 1
+          end>
+        RowCollection = <
+          item
+            Value = 50.000000000000000000
+          end
+          item
+            Value = 50.000000000000000000
+          end>
+        object lblGlucoseLeft: TLabel
+          Align = Client
+          StyledSettings = [Family, Style, FontColor]
+          Margins.Right = 8.000000000000000000
+          Size.Width = 254.000000000000000000
+          Size.Height = 55.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          TextSettings.HorzAlign = Trailing
+          TextSettings.WordWrap = False
+          Text = 'Glucose:'
+          TabOrder = 7
+        end
+        object rctGlucose: TRoundRect
+          Align = VertCenter
+          Fill.Color = claGhostwhite
+          HitTest = False
+          Position.X = 262.000000000000000000
+          Position.Y = 7.000000000000000000
+          Size.Width = 100.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = xFF007AFF
+          object btnGlucose: TButton
+            Align = Client
+            StyledSettings = [Family]
+            Size.Width = 100.000000000000000000
+            Size.Height = 40.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            Text = '0.0'
+            TextSettings.Font.Size = 20.000000000000000000
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+            TextSettings.FontColor = claDarkred
+            OnClick = btnGlucoseClick
+          end
+        end
+        object lblGlucoseRight: TLabel
+          Align = Client
+          StyledSettings = [Family, Style, FontColor]
+          Margins.Left = 8.000000000000000000
+          Size.Width = 254.000000000000000000
+          Size.Height = 55.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          TextSettings.WordWrap = False
+          Text = 'mmol/L'
+          TabOrder = 4
+        end
+        object lblCarbsLeft: TLabel
+          Align = Client
+          StyledSettings = [Family, Style, FontColor]
+          Margins.Right = 8.000000000000000000
+          Size.Width = 254.000000000000000000
+          Size.Height = 55.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          TextSettings.HorzAlign = Trailing
+          TextSettings.WordWrap = False
+          Text = 'Carbohydrates:'
+          TabOrder = 6
+        end
+        object rctCarbs: TRoundRect
+          Align = VertCenter
+          Fill.Color = claGhostwhite
+          HitTest = False
+          Position.X = 262.000000000000000000
+          Position.Y = 62.000000000000000000
+          Size.Width = 100.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = xFF007AFF
+          object btnCarbs: TButton
+            Align = Client
+            StyledSettings = [Family]
+            Size.Width = 100.000000000000000000
+            Size.Height = 40.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            Text = '0'
+            TextSettings.Font.Size = 20.000000000000000000
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+            TextSettings.FontColor = claNull
+            OnClick = btnCarbsClick
+          end
+        end
+        object lblCarbsRight: TLabel
+          Align = Client
+          StyledSettings = [Family, Style, FontColor]
+          Margins.Left = 8.000000000000000000
+          Size.Width = 254.000000000000000000
+          Size.Height = 55.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Size = 14.000000000000000000
+          TextSettings.WordWrap = False
+          Text = 'grams'
+          TabOrder = 3
+        end
+      end
+    end
+    object tabIOB: TTabItem
+      CustomIcon = <
+        item
+          Width = 32
+          Height = 32
+          PNG = {
+            89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+            F4000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+            04A8494441545847ED975B689C5510C7F796CAB6B1C6A24694AC69ED2ADA5AA9
+            F6A21842558C37FA502482C552AAF4414B946069730FB9471F8C78A131FA5023
+            11646B7C28141ADA5A128AD65B2F885691D6240A1A8D954DC9C6EC6ED6DF9C6F
+            FAF97D9BB589DD8808FE613273E6CC9C9973BE3973369EFFF16FC3AF3C23EAEB
+            EB434545450B070606A2AA9A737895DBA8ADADDD904AA5B67ABDDE550CAF145D
+            2291180904029F2276363535ED15DD5CC14EA0A2A2E2F29C9C9C5711370E0D0D
+            250A0A0ABE40FEC44C7A3CAB878787978742A100C9BD4D42CFB6B7B79FD5B9AC
+            E0933F65656597107C007123D4575858787D7373F3CA9191916D42228B4EE638
+            994D622B3EE29B2D4C027979790DB065ECEE058EF8FE86868621D1E7E7E73F25
+            24B2E8644E6CC4567DB286AFA6A6E616F876E804BBAD31DA3FB108CAB3440B6A
+            7302DAAEBE59414EE001486E43655757575C94E7C16E2F85CDB74616D4A61212
+            1FF1CD0A3EADF694CFE7FBD052B9105672416D53EA9B15BC1CE3D7EC745E4B4B
+            CB62D519D003164E4D4DFD86E82560981AF8D69AB1505D5D7D86F9F95C4F29C6
+            D3C81B5863D09A9D3DE404BE27403E0103AA3320A0349FFD722559BCA7BCBC3C
+            68CD98E402E2836F82E165D04AC68F98C9BF0909FA19740FB41C3A0ED9A0EA1F
+            A431AD45DC9B9B9BDB0D2F3513966DD0EFF73B3BE43CF9C3C99490CC6D46E346
+            147D2F1BFB51C70652844745A0B96C159E0E9238CA09DC8978C6D2B86CAF506E
+            C0C9AC20C87EC4B60CF41AEB1C2741E92736BCA5A5A5FE70387C84DDAC617C2F
+            013FB0A6328313B91B7610FA0532AD5A51492D9DE2B3BCAFE38CC0E624B1D672
+            121332F645229124596F8E46A3BFC7E3F13D14A574C38C9039B1191D1D95ABE8
+            0C9E1104DBC286BC42C42840F50309AE4826932F5B168EB7809DBD0B7B185A00
+            F5E1BC0F326F014EABA187104B62B1D8B96030283DC02E4AC5B413900468E3BB
+            75684EAFBFBFFF407171B114FFE38D8D8D3DA6152BE41B2F90970F5E82C14B64
+            7D444864D1413F113C179E1E7C5690CF4BF0E7451E1F1FEFA41E163B1330E05E
+            5FA5A287E3FE15360AA58C82E741F945830DD5C13ED68DEC707E8276D84E6B74
+            51C85484DB08F88ECA36A881756A3738ED04E61872F5CEA69323C9EBFEE90466
+            C47F228118D407C9711EA4074C1AEDECF03375F11EFC75485AFE34B81EA00C38
+            44D0279CAF1CEDF606746F21DE6169FE12BB28C01D74BC733A9642BF8F02ECA6
+            135EAD2A57234ABF055FB180B4E745047C9A9DACA77822F4895DE8A6B8AEC7E0
+            D78AA1C2BE05F0080DE8D1AAAAAA55ACF10CBA9B59E30DEE7E37D7EF5612E8C7
+            3E479CEC4F80D349150D707845B287F732DC298BC0EB09BCBBADAD4D8E568ED5
+            06769FB3B0AC91849AE457B604C26F13E3DB49A49317F5B9D6D6D68F189F7F6F
+            8EB9FE2F20E335185E2332CE87614B5838FDDBC9AFA7A593939363D8DC250AF8
+            6992351BE01315227FC7BB514EF01745E7C020BE4BF80C3732B7746262E2B02B
+            8174E8F73E85E8B48BB3488820AE773D1D7575754F724A6FEAD080F1977C9A65
+            3A34B8E02D20C83724704887062CB267A6E082B1B131E980D2C66DB06BA91F17
+            66BC8614CE7A826E41EC853FC6CFF2CDD6CC85D1D1D111A3606F42ACC6AF07BE
+            8EC748FEF372C0E3F903AEEA17D7A06C16BA0000000049454E44AE426082}
+        end>
+      IsSelected = False
+      Size.Width = 213.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'tabitemcustom'
+      TabOrder = 0
+      Text = 'Insulin On Board'
+      Visible = False
+      ExplicitSize.cx = 213.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+    end
+    object tabSettings: TTabItem
+      CustomIcon = <
+        item
+          Width = 32
+          Height = 32
+          PNG = {
+            89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+            F4000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+            0487494441545847AD967F489D6514C75FAFBF2E73DEB116BA3FCA8A392B70A3
+            C55A0CC26C2D18415B6E44FD918B288458B52244BA5E733715B6AC6D1414C5EA
+            8F4D5A4C363689A24651B97E11B448B862FDA149602D44B1FC955EED739EE7DC
+            D7F7BD2ABD77DE2F1CCE8FE7799F739E73CEF33C6F8E9365C462B14DF3F3F375
+            79797947E2F1F8EF626B6E6EBE766E6EEE5028147A07DBCF66A222A43C6BC8C9
+            C9398DA3A793C9E4713539387F0D7600FE91B52C20EB01B0FBEF8413C8BEA6A6
+            A6CFA08BA8FB75EC1BE15E643500521DC2F15A55053BA09D563458E46FC53D10
+            8D46B7E6E6E69ED3DD8509608F1D59161DD014F3ABF8EEE15C6BBB7A545757C7
+            60F7E2B812BAC55A0D2E43AF409FE06C3D63EB8DD5713643B7A3AFC39E5C7109
+            6667679B61EF5BCDC5651A71674B4BCB7121E648197AEC908B2E9AF248D68E21
+            CDD60DBB4B64167EB6ADADED0D915360FC39D831AB395F10D83D2264B309DDB5
+            D87D52C5E530AB7CE54DD8D8D878030E5F47DC6D2D8EC31DF0FDCCCCCC7DEDED
+            ED7F8BDED0D0B08686BB08DD6126589CE4BB17561C0037DF091AEA0955BD9053
+            71CA8ACEE3D0362B2E8052BDF9BF01C8D96647BD382944FD81DA3D64472CA8ED
+            9D74F349C6C56104DA6B0696871CD924CEB723D70409A09CC9BFAA3A4200D7A8
+            BC081AEC398259F22EC0F1D9D6D656D9C0BCB5A43521BBD9434A1F55D580052B
+            5514ACA5E6D7AB6C1C32BF017E9BE83C3473389F3183169708FE6B95E57A969E
+            709D0BDC0CB0D05E267C80984FA4A738BB0779D1E4828962DB6226597441AFD2
+            40FDCCE980DF8D3E0CDF212F1D9BF803BD14EA205BB570595BB252C3BABF9081
+            9BC596823703F743F92230B9766868E80ABC13D5EB5C20DDFED5C0C040BF3A17
+            AC63A772EF0B6AA0F7380572EE0D187B06E7EFC21F53930B3703A47135137E42
+            DC602D19E173762BB79D2FBD41E06680F4FD037BCA6A8B313838E85E1E5E889D
+            4CC8CE32762E48BF0937294F41167D8BCC944F4C4C847124E5F8D08C28CACACA
+            F218BF49D58C614A505757975F5252524E9DBA70526E4600FA619AE645555DD0
+            545DF4C703AA0AE46191FBFF37D5032344D7264A4B4BC75930E1753E363636C5
+            D51957D507EC2FA998C26EBE1D60AD31823BA3B6409012DC0A99EEF7221289F4
+            D21753AAFA9048247A96E989623622EF7D6084C6C7C72754F6617A7A7A835C34
+            AAFA50515171A3D45ED57448330746A81890BE8DD45BCEEF9FD6EC3885858511
+            EAFAA4AAE970CFB88079DFC276716B5EC771DC6AADC1E07B0BA8E1CBC2ACE638
+            929DA2A2A2E709F0845CB364248C93C6EEEEEE68555595373B0FE2F882CA19C1
+            976276F2A98A06385F057B7B72727284E07E1C1D1D1DA1C631AF73BD07BE5435
+            63B80BC951A40C4755F541CA01DB426386AD6501D20B64457E48AE0A6E001CC5
+            78DA1F4B6090955A8E9FEF150D0A6F09AE284F3595FC60B6417F89CD835EB974
+            E0BBA07E310C0F0FFF0B1B153953F89A905D1C84ADEEEBEB3BDCD9D9697E2CB1
+            3DC20E4F8B2CA04C15DC8EE607A5BEBEBEB8A0A0409EE6F334E1C7664286F005
+            B014E8FC4A766CFEE9E554C8B195136106B300DF29580AFC17F4C1CC5F4E381C
+            EEC9A673C7719CFF00EA09D2D62F0D0F3B0000000049454E44AE426082}
+        end>
+      IsSelected = False
+      Size.Width = 320.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'tabitemcustom'
+      TabOrder = 0
+      Text = 'Settings'
+      ExplicitSize.cx = 214.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+      object LB: TListBox
+        Align = Client
+        Size.Width = 640.000000000000000000
+        Size.Height = 431.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        DisableFocusEffect = True
+        Images = IL
+        DefaultItemStyles.ItemStyle = ''
+        DefaultItemStyles.GroupHeaderStyle = ''
+        DefaultItemStyles.GroupFooterStyle = ''
+        Viewport.Width = 635.000000000000000000
+        Viewport.Height = 431.000000000000000000
+        object lbhTarget: TListBoxGroupHeader
+          Selectable = False
+          Size.Width = 635.000000000000000000
+          Size.Height = 22.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          Text = 'Target (mmol/L)'
+        end
+        object lbiTargetMorning: TListBoxItem
+          Selectable = False
+          ImageIndex = 0
+          Position.Y = 22.000000000000000000
+          StyleLookup = 'listboxitemnodetail'
+          TabOrder = 1
+          Text = 'Morning'
+          object edtTargetMorning: TEdit
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = MostRight
+            TabOrder = 40
+            KeyboardType = DecimalNumberPad
+            Position.X = 530.000000000000000000
+            Position.Y = 7.000000000000000000
+            Margins.Right = 8.000000000000000000
+            Size.Width = 97.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            OnExit = edtTargetMorningExit
+          end
+        end
+        object lbiTargetDay: TListBoxItem
+          Selectable = False
+          ImageIndex = 1
+          Position.Y = 66.000000000000000000
+          StyleLookup = 'listboxitemnodetail'
+          TabOrder = 2
+          Text = 'Day'
+          object edtTargetDay: TEdit
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = MostRight
+            TabOrder = 40
+            KeyboardType = DecimalNumberPad
+            Position.X = 530.000000000000000000
+            Position.Y = 7.000000000000000000
+            Margins.Right = 8.000000000000000000
+            Size.Width = 97.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            OnExit = edtTargetDayExit
+          end
+        end
+        object lbiTargetEvening: TListBoxItem
+          Selectable = False
+          ImageIndex = 2
+          Position.Y = 110.000000000000000000
+          StyleLookup = 'listboxitemnodetail'
+          TabOrder = 3
+          Text = 'Evening'
+          object edtTargetEvening: TEdit
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = MostRight
+            TabOrder = 40
+            KeyboardType = DecimalNumberPad
+            Position.X = 530.000000000000000000
+            Position.Y = 7.000000000000000000
+            Margins.Right = 8.000000000000000000
+            Size.Width = 97.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            OnExit = edtTargetEveningExit
+          end
+        end
+        object lghCarbRatio: TListBoxGroupHeader
+          Selectable = False
+          Position.Y = 154.000000000000000000
+          Size.Width = 635.000000000000000000
+          Size.Height = 22.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 4
+          Text = 'Carbohydrate Ratio'
+        end
+        object lbiCarbRatioMorning: TListBoxItem
+          Selectable = False
+          ImageIndex = 0
+          Position.Y = 176.000000000000000000
+          StyleLookup = 'listboxitemnodetail'
+          TabOrder = 5
+          Text = 'Morning'
+          object edtCarbRatioMorning: TEdit
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = MostRight
+            TabOrder = 49
+            KeyboardType = DecimalNumberPad
+            Position.X = 530.000000000000000000
+            Position.Y = 7.000000000000000000
+            Margins.Right = 8.000000000000000000
+            Size.Width = 97.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            OnKeyDown = edtCarbRatioKeyDown
+            OnExit = edtCarbRatioMorningExit
+          end
+        end
+        object lbiCarbRatioDay: TListBoxItem
+          Selectable = False
+          ImageIndex = 1
+          Position.Y = 220.000000000000000000
+          StyleLookup = 'listboxitemnodetail'
+          TabOrder = 6
+          Text = 'Day'
+          object edtCarbRatioDay: TEdit
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = MostRight
+            TabOrder = 49
+            KeyboardType = DecimalNumberPad
+            Position.X = 530.000000000000000000
+            Position.Y = 7.000000000000000000
+            Margins.Right = 8.000000000000000000
+            Size.Width = 97.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            OnKeyDown = edtCarbRatioKeyDown
+            OnExit = edtCarbRatioDayExit
+          end
+        end
+        object lbiCarbRatioEvening: TListBoxItem
+          Selectable = False
+          ImageIndex = 2
+          Position.Y = 264.000000000000000000
+          StyleLookup = 'listboxitemnodetail'
+          TabOrder = 7
+          Text = 'Evening'
+          object edtCarbRatioEvening: TEdit
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = MostRight
+            TabOrder = 49
+            KeyboardType = DecimalNumberPad
+            Position.X = 530.000000000000000000
+            Position.Y = 7.000000000000000000
+            Margins.Right = 8.000000000000000000
+            Size.Width = 97.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            OnKeyDown = edtCarbRatioKeyDown
+            OnExit = edtCarbRatioEveningExit
+          end
+        end
+        object lghInjectionSchedule: TListBoxGroupHeader
+          Selectable = False
+          Position.Y = 308.000000000000000000
+          Size.Width = 635.000000000000000000
+          Size.Height = 22.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 8
+          Text = 'Injection Schedule (units of insulin)'
+        end
+        object lbiAbove8: TListBoxItem
+          Selectable = False
+          Position.Y = 330.000000000000000000
+          StyleLookup = 'listboxitemnodetail'
+          TabOrder = 17
+          Text = 'Above 8 mmol/L'
+          object edtAbove8: TEdit
+            Tag = 8
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = MostRight
+            TabOrder = 40
+            KeyboardType = DecimalNumberPad
+            Position.X = 530.000000000000000000
+            Position.Y = 7.000000000000000000
+            Margins.Right = 8.000000000000000000
+            Size.Width = 97.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            OnExit = edtAboveExit
+          end
+        end
+        object lbiAbove10: TListBoxItem
+          Selectable = False
+          Position.Y = 374.000000000000000000
+          StyleLookup = 'listboxitemnodetail'
+          TabOrder = 16
+          Text = 'Above 10 mmol/L'
+          object edtAbove10: TEdit
+            Tag = 10
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = MostRight
+            TabOrder = 40
+            KeyboardType = DecimalNumberPad
+            Position.X = 530.000000000000000000
+            Position.Y = 7.000000000000000000
+            Margins.Right = 8.000000000000000000
+            Size.Width = 97.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            OnExit = edtAboveExit
+          end
+        end
+        object lbiAbove12: TListBoxItem
+          Selectable = False
+          Position.Y = 418.000000000000000000
+          StyleLookup = 'listboxitemnodetail'
+          TabOrder = 15
+          Text = 'Above 12 mmol/L'
+          object edtAbove12: TEdit
+            Tag = 12
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = MostRight
+            TabOrder = 40
+            KeyboardType = DecimalNumberPad
+            Position.X = 530.000000000000000000
+            Position.Y = 7.000000000000000000
+            Margins.Right = 8.000000000000000000
+            Size.Width = 97.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            OnExit = edtAboveExit
+          end
+        end
+        object lbiAbove14: TListBoxItem
+          Selectable = False
+          Position.Y = 462.000000000000000000
+          StyleLookup = 'listboxitemnodetail'
+          TabOrder = 14
+          Text = 'Above 14 mmol/L'
+          object edtAbove14: TEdit
+            Tag = 14
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = MostRight
+            TabOrder = 40
+            KeyboardType = DecimalNumberPad
+            Position.X = 530.000000000000000000
+            Position.Y = 7.000000000000000000
+            Margins.Right = 8.000000000000000000
+            Size.Width = 97.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            OnExit = edtAboveExit
+          end
+        end
+        object lbiAbove16: TListBoxItem
+          Selectable = False
+          Position.Y = 506.000000000000000000
+          StyleLookup = 'listboxitemnodetail'
+          TabOrder = 13
+          Text = 'Above 16 mmol/L'
+          object edtAbove16: TEdit
+            Tag = 16
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = MostRight
+            TabOrder = 40
+            KeyboardType = DecimalNumberPad
+            Position.X = 530.000000000000000000
+            Position.Y = 7.000000000000000000
+            Margins.Right = 8.000000000000000000
+            Size.Width = 97.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            OnExit = edtAboveExit
+          end
+        end
+        object lbiAbove18: TListBoxItem
+          Selectable = False
+          Position.Y = 550.000000000000000000
+          StyleLookup = 'listboxitemnodetail'
+          TabOrder = 12
+          Text = 'Above 18 mmol/L'
+          object edtAbove18: TEdit
+            Tag = 18
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = MostRight
+            TabOrder = 40
+            KeyboardType = DecimalNumberPad
+            Position.X = 530.000000000000000000
+            Position.Y = 7.000000000000000000
+            Margins.Right = 8.000000000000000000
+            Size.Width = 97.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            OnExit = edtAboveExit
+          end
+        end
+        object lbiAbove20: TListBoxItem
+          Selectable = False
+          Position.Y = 594.000000000000000000
+          StyleLookup = 'listboxitemnodetail'
+          TabOrder = 11
+          Text = 'Above 20 mmol/L'
+          object edtAbove20: TEdit
+            Tag = 20
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = MostRight
+            TabOrder = 40
+            KeyboardType = DecimalNumberPad
+            Position.X = 530.000000000000000000
+            Position.Y = 7.000000000000000000
+            Margins.Right = 8.000000000000000000
+            Size.Width = 97.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            OnExit = edtAboveExit
+          end
+        end
+        object lbiAbove22: TListBoxItem
+          Selectable = False
+          Position.Y = 638.000000000000000000
+          StyleLookup = 'listboxitemnodetail'
+          TabOrder = 10
+          Text = 'Above 22 mmol/L'
+          object edtAbove22: TEdit
+            Tag = 22
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = MostRight
+            TabOrder = 40
+            KeyboardType = DecimalNumberPad
+            Position.X = 530.000000000000000000
+            Position.Y = 7.000000000000000000
+            Margins.Right = 8.000000000000000000
+            Size.Width = 97.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            OnExit = edtAboveExit
+          end
+        end
+        object lbiAbove24: TListBoxItem
+          Selectable = False
+          Position.Y = 682.000000000000000000
+          StyleLookup = 'listboxitemnodetail'
+          TabOrder = 9
+          Text = 'Above 24 mmol/L'
+          object edtAbove24: TEdit
+            Tag = 24
+            Touch.InteractiveGestures = [LongTap, DoubleTap]
+            Align = MostRight
+            TabOrder = 40
+            KeyboardType = DecimalNumberPad
+            Position.X = 530.000000000000000000
+            Position.Y = 7.000000000000000000
+            Margins.Right = 8.000000000000000000
+            Size.Width = 97.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            OnExit = edtAboveExit
+          end
+        end
+      end
+    end
+  end
+  object IL: TImageList
+    Source = <
+      item
+        MultiResBitmap = <
+          item
+            Width = 64
+            Height = 64
+            PNG = {
+              89504E470D0A1A0A0000000D4948445200000040000000400806000000AA6971
+              DE000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              036349444154785EED984D48545114C79DD1661C7370B2C8844284A2906814C3
+              5541D6266B510B170941B8682921A310F8D5E007820B17B672E3266C61D0A245
+              04A112A5B4A8286908CA166E428B4A1C746ABEFADDF7DE848935CDBCF71CC1F3
+              83CBB9F79E37F7BDFF79E79D7B993C411004411004411004411004411076140E
+              C3E68C8E8E8E6987C3B1373F3FDF1F0C0613C6F496E1346CCE703A9D2709C071
+              BA45FACCD692F300E41A098061772C9606A0ABABEB526767E7784F4FCF7E63EA
+              7F98A5CDD156B5511A58BB98FB8C757777371B53A6B07417E0C1EE62AE2493C9
+              1055BD9EAABEA47BAC41894F24120FE99EA24DF6F6F69ED31C26B03403A8E837
+              9478AA7A553C1E9FCA3013FEC97AF1D805EE755DF798C3F2738012ADC4AB2030
+              7CBBB8B858333A3A1AD5BD9ADF178BC59AF037D0AA993AA0E6F9CD67B2E60DDD
+              47881BDF983D64D714E68C125F5050A0B2EBA3EE31872D072115041E7412A165
+              2E97AB82875D6D696971979494DC4474804BBCFA959BB3B2B212292E2EBE4D40
+              F86930ACE60880124C6C9C67AD12AFB06517E00197D49B4F89E7B477C8E7F3CD
+              22FE166E25FE319FCA35827418416EAE75612B996BA23DF07ABD6EAE6D232B5E
+              50548FAA35F157D18E59295E61FB51986C3888D0A7742BB01FB0CDFDFDFD6AFC
+              57105D4300C6E8FAC9A22F04F234C2DFE95E6BB135008877217A866E2D6D8637
+              781121DF35671A5A5B5B3D7C06F7E85EA0BD8F4422B54343432B9AD3426C3D08
+              21BE0DA3C4CF67225E313C3CBC160E871BE9BEA21D292C2C0C6A0E8BB12D03DA
+              DBDBBD885E207D7D04A29EB49F365C19C1E7E027102FA90B516A42E5C0C0C027
+              C36509B66580C7E36954E2E93EC956BCA2AFAFEF359FC27DBA6E027A559FB50E
+              DB0240353FAF2C6F7F5C9B3087B6066B3668230BB133002794A59AAB22680A52
+              FF9961FDDA8485645D03D8DB2749C93A6398E279EA7CCEC1E52B664F341A2D1D
+              1C1CFCA6E6CCC07A3F31BBD499419D2CA90D7708EE65DDAB43D0E7979797EB46
+              46467E185369C93A03B8791966F7FAC603946253686BBBDDEEA4363209A7436D
+              9DF2F272EDA571AF7D983FEECFE756CA3139234D5967007BBCBAD1C6BFB156D9
+              EAB6EA7F3D47201028A240FED6100A85D6262626E2C6501084F498DD05EA8DE1
+              76618E67AACEA40E65BD0B70A3ED586C62861504411004411004411004411084
+              4DC9CBFB05386A4515BD9868DA0000000049454E44AE426082}
+          end>
+        Name = 'morning'
+      end
+      item
+        MultiResBitmap = <
+          item
+            Width = 64
+            Height = 64
+            PNG = {
+              89504E470D0A1A0A0000000D4948445200000040000000400806000000AA6971
+              DE000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              055149444154785EED995D685C451480B349D84D369B646DD5068CB60AA1124C
+              7F4C89880AB67DA841300A816AF5C13EF822041FD218F36FC8AF8418348A1084
+              22C45488A20FA5D2872642AAA1B4FE16A3B2B6684034DBD26E3059377F1BBF73
+              EF5DD96A9B747767BA42E783E1CC3D73EFEC9C3367CECCBD9B6130180C0683C1
+              6030180C869B109723D3465353D3672E976B635656D6F6F6F6F6A8A3BE61643A
+              326D646666EEC201F751F5DA9A1B4BDA1D906E8C031C79D3A2D4012D2D2D55CD
+              CDCD236D6D6DB73BAAEB6192729612B6AED681BE7DFCCEE1D6D6D6838E2A2594
+              EE020CEC08E2E9D5D5D529B2FA6EB27AD06E5183181F8D463FA5FA3065ACA3A3
+              63AFD590024A23808CFE92184F562F5D5959194F3012D624DE78E434BFF582DD
+              921ACACF0162B4182F4EE0F2FB9999999D4343434B76ABD5EE5F5E5E7E86F64A
+              CA0E5445A2E7990B44CD77548F63DCC8BFA387E81A473C2AC66767674B749DB7
+              5B5243CB41489CC040C7307493DBEDDECC60C33535359EC2C2C25730BA965BF2
+              ED3BAF4E381C8EE4E6E6BE854378B47D4E7438400CC637997B54192F68D90518
+              6050663E663CA7BD3BFD7EFF24C6BF4A733ECE3941FD798C2909854239480FBA
+              7BD01DA0FDA8D7EBCDA17E88A8F892A4BA55FAE49E52CABD2A8D17B41F858986
+              628C3B497533E51CE520C96B42DAAE05CFDC8FF18771C236A2E8228E7C04C37F
+              749A95A2D50118E2C6F82FA896232731EAF1DEDEDECB76EBDAF0AC97FB3FC409
+              955C06229148795F5FDF9F76AB3AB41E8430FA10428C3F9F88F1822C1D724035
+              BBCA375C96E4E4E4B4DB2D6AD11601757575F9ACD969C2D7CFE51EC25EB278C2
+              10093B70E057541771E2DDDDDDDDBFDB2D6AD0160164F16A319EC14F246BBC40
+              2448047C4CF1E0D0E72CA542B43980D07D4C24831EB114A961F5419F920F94A2
+              D301DB44E200498229411F9F8B64096CB7140A493A07B0B78F31B00AE732C6A9
+              D8F99C83CB25C42DDCB39130967A2AB86A6B6B17391F6473BE70CBC992F3C130
+              3BC4934EBB054E3F373B3B5B313838B8E0A8D625E908E0C73721F2E20B03D880
+              BC828585052D8996DFBA1571C5EF936F36704C4EC8A6A41DC01655C6EC4AA6FF
+              A7A02B779A658033221950B1A54881C6C6C62299FDA5A5A54BB1F78AAEAEAE4A
+              8ECCBEF8DF0F04025B060606FEB21EBA4EB46D8384E80744C97E66E54506FB8E
+              A34E0AFAAAA6AF51AA4A5E81E3D1960499117975159E7564D2607CAC8F589FCA
+              D0E60006FD11E2328E78888498F4AC31FB3B1155F286485FC3B6561DDA1C40E6
+              9F230FBC267596C1BB9CE8FE9320D783CC9F8723DFA3EA2207BC4D9F7FD82DEA
+              D0E60021180CBECEDE7D9A99DB42023B968813C478CEFF124565949F888036AB
+              41315A1DE064ECA788805FD8211E409E6139ECB65BAF0D59BF82193F85E3F6F1
+              3A1C443ED1DFDF3FEF342B45EBEB3048FFAB1874070EF884FA2E4B9B91217F87
+              0DE39093F3F3F3D318192D28282846F7206D0790B123EF0F2CA3AACECECE8073
+              AD1C2D0E20D47D18759499BB8B52CADA8DA073B31CEA1617175FF6783C05CEAD
+              5785700F13016FF06C27CF5A9FCB891C79298AD2EFBE9E9E9E0BA25381720788
+              F1CC6CECD3F5AFA150686BFCD1B4BEBEBE90B7C4FD54659625C31761AF0BA748
+              A87FCB8C1FE7F07404C32FCAFD31D80DBE2632E423EA599CB0579513943A20DE
+              78A4D2AFB70D0D0DB7D1DF09AA9214953941691224C4DF4428375E1063C568AA
+              F22F52193945B6C79451EA00427802E3C713319EB5FD3E45A266DD688C73C231
+              96C398AD4D0D2D493011305EBEFBE791077CBAB6BAB5D07A0E48049FCF9796C9
+              F8DF38205D180738329DFC4CF96D6A6A2AA10F19AA48BB03D8392AE6E6E64A46
+              4747571C95C16030180C0683C160D04D46C6DF69BB4132FA55CA020000000049
+              454E44AE426082}
+          end>
+        Name = 'day'
+      end
+      item
+        MultiResBitmap = <
+          item
+            Width = 64
+            Height = 64
+            PNG = {
+              89504E470D0A1A0A0000000D4948445200000040000000400806000000AA6971
+              DE000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+              035249444154785EED983D4C535114C7690B1492A6BA088B2283CA26260E0A2A
+              468D5F0B460713238B8B83B269D21020480B4D512303262E1AE282E82292F819
+              7531388831A0266E262AA63AD84868C156A0FECEEB83C4C44630EFBE0E9E5F72
+              7BCEBDF7F5A5E77FCEBBF7F615298AA2288AA2288AA2288AA2288AA228FF111E
+              DBBA464B4B4B657171F171DC83B4DA6C36DBDCD5D575CB9A2C00AE09D0D1D111
+              989F9F3F87DB4CF35B83C058757777F707BBEB3A5EDB1AA5ADADAD86405FE19E
+              49A7D325D8216B02A886CFB65B108C0B20C17B3C9E67B8EB69E3E5E5E59B2391
+              C861FC9F329F48247C620B855101A4EC09FE0EEE2A2AE0613299ACEBECEC1CCB
+              CD167D918F6030B8DAEA1508A302CCCDCD75606A58E8DE52EA477A7B7B677233
+              16E3F28140DBAC5E81302600D9AFC86432B2E065C9FE09323F9D9B59E4BE7C20
+              4E93D52B10C60420FBC7FC7E7F1901DE8B46A32FEDE145BC5EEF202685DDDBDA
+              DA5A9F1B751F630250DA076C77C0B6BF4145243097C4E7DAFE5028B4427CB731
+              59011BC5FA7CBEE7D6C01F20FB512AE435026C282D2D1D2E8408C604989D9DAD
+              101B8FC7F3EEF354C10F046844AC09BA0D8830DADEDEBE2337EB0EC64E820492
+              C19490653F818A9F17D680B554C1106D933DF4147F8036822FE2CCD3AA106B4B
+              381CBE2E173885C947E0ABEDFE759F97A3F0E4E4E4565CD936A768BB09F62ABB
+              C73BDA142D253E6311B9DE498C0940E6AD7D9E1FBDA47DBEAFAF2FCD0931CCD6
+              B986CC9FE47BB709FA3D47E7699A548060DDD3498C3D0294F56944B88CFB88C0
+              F6E746FF0DEEF5987BED41905354CB157BD8114C3E0283923DDC7DAC0775B9D1
+              E543F00D123CF74A729ABC610F3B86310162B1D83756756B9F877E4E8641DB5F
+              327C6725E69AF8DCEB228BE977F19DC49800422A958A62DED06AD81687972382
+              044FC9DF25FBEB580FC6582463F694A3181540FEFC104023EE67EC4E1E8B514A
+              7A7B6E363F52F604FF02578EC89F384C1D9245D29A741857DE0891CD6A029297
+              20B5D2C77F22FB3CEEC8CCCCCC442010C8E25721503DD96E42AC5D729D645E82
+              A7F43F4ADF046EBE122B23C010DBDC59FE2405ECE17C4C11FC05CAFEBCA9CC2F
+              E09A000BD8CFF6515CEBA528AB7B25D68B2871C93895F100916EF6F4F44CCAF5
+              8AA2288AA2288AA2288AA2288AA228CE5154F40BF4C663A2D44E758100000000
+              49454E44AE426082}
+          end>
+        Name = 'evening'
+      end>
+    Destination = <
+      item
+        Layers = <
+          item
+            Name = 'morning'
+            SourceRect.Right = 64.000000000000000000
+            SourceRect.Bottom = 64.000000000000000000
+          end>
+      end
+      item
+        Layers = <
+          item
+            Name = 'day'
+            SourceRect.Right = 64.000000000000000000
+            SourceRect.Bottom = 64.000000000000000000
+          end>
+      end
+      item
+        Layers = <
+          item
+            Name = 'evening'
+            SourceRect.Right = 64.000000000000000000
+            SourceRect.Bottom = 64.000000000000000000
+          end>
+      end>
+    Left = 8
+    Top = 8
+  end
+end
