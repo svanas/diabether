@@ -24,14 +24,14 @@ type
     function Query: TFDQuery;
     procedure AfterConnect(Sender: TObject);
 
-    function GetTarget(Time: TInsulinTime): Double;
-    procedure SetTarget(Time: TInsulinTime; Value: Double);
+    function GetTarget(Time: TInsulinTime): TBloodGlucose;
+    procedure SetTarget(Time: TInsulinTime; Value: TBloodGlucose);
 
     function GetCarbRatio(Time: TInsulinTime): Integer;
     procedure SetCarbRatio(Time: TInsulinTime; Value: Integer);
 
-    function GetCorrUnits(Glucose: Double): Double;
-    procedure SetCorrUnits(Glucose, Value: Double);
+    function GetCorrUnits(Glucose: TBloodGlucose): Double;
+    procedure SetCorrUnits(Glucose: TBloodGlucose; Value: Double);
 
     function GetGlucoseUnit: TGlucoseUnit;
     procedure SetGlucoseUnit(Value: TGlucoseUnit);
@@ -42,9 +42,9 @@ type
     function FirstTime: Boolean;
     function CorrRatio(IT: TInsulinTime): Double;
 
-    property Target[Time: TInsulinTime]: Double read GetTarget write SetTarget;
+    property Target[Time: TInsulinTime]: TBloodGlucose read GetTarget write SetTarget;
     property CarbRatio[Time: TInsulinTime]: Integer read GetCarbRatio write SetCarbRatio;
-    property CorrUnits[Glucose: Double]: Double read GetCorrUnits write SetCorrUnits;
+    property CorrUnits[Glucose: TBloodGlucose]: Double read GetCorrUnits write SetCorrUnits;
 
     property GlucoseUnit: TGlucoseUnit read GetGlucoseUnit write SetGlucoseUnit;
     property OnGlucoseUnitChange: TNotifyEvent read FOnGlucoseUnitChange write FOnGlucoseUnitChange;
@@ -127,17 +127,17 @@ begin
     Result.Open('SELECT * FROM SETTINGS');
 end;
 
-function TSettings.GetTarget(Time: TInsulinTime): Double;
+function TSettings.GetTarget(Time: TInsulinTime): TBloodGlucose;
 begin
   if Time = itEvening then
-    Result := Query.FieldByName('TARGET_EVENING').AsFloat
+    Result := TBloodGlucose.Create(Query.FieldByName('TARGET_EVENING').AsFloat)
   else if Time = itDay then
-    Result := Query.FieldByName('TARGET_DAY').AsFloat
+    Result := TBloodGlucose.Create(Query.FieldByName('TARGET_DAY').AsFloat)
   else
-    Result := Query.FieldByName('TARGET_MORNING').AsFloat;
+    Result := TBloodGlucose.Create(Query.FieldByName('TARGET_MORNING').AsFloat);
 end;
 
-procedure TSettings.SetTarget(Time: TInsulinTime; Value: Double);
+procedure TSettings.SetTarget(Time: TInsulinTime; Value: TBloodGlucose);
 begin
   Query.Edit;
   try
@@ -176,7 +176,7 @@ begin
   end;
 end;
 
-function TSettings.GetCorrUnits(Glucose: Double): Double;
+function TSettings.GetCorrUnits(Glucose: TBloodGlucose): Double;
 begin
   if Glucose >= 24 then
     Result := Query.FieldByName('CORR_ABOVE_24').AsFloat
@@ -198,7 +198,7 @@ begin
     Result := Query.FieldByName('CORR_ABOVE_8').AsFloat;
 end;
 
-procedure TSettings.SetCorrUnits(Glucose, Value: Double);
+procedure TSettings.SetCorrUnits(Glucose: TBloodGlucose; Value: Double);
 begin
   Query.Edit;
   try
@@ -227,7 +227,7 @@ end;
 
 function TSettings.CorrRatio(IT: TInsulinTime): Double;
 begin
-  for var G in [8, 10, 12, 14, 16, 18, 20, 22, 24] do
+  for var G in [TBloodGlucose.Create(8), TBloodGlucose.Create(10), TBloodGlucose.Create(12), TBloodGlucose.Create(14), TBloodGlucose.Create(16), TBloodGlucose.Create(18), TBloodGlucose.Create(20), TBloodGlucose.Create(22), TBloodGlucose.Create(24)] do
   begin
     Result := (G - 5.8) / Self.CorrUnits[G];
     if Result > 0 then

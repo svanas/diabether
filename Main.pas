@@ -105,15 +105,15 @@ type
     function GetUnits: Integer;
     procedure SetUnits(Value: Integer);
 
-    function GetGlucose: Double;
-    procedure SetGlucose(Value: Double);
+    function GetGlucose: TBloodGlucose;
+    procedure SetGlucose(Value: TBloodGlucose);
 
     function GetCarbs: Integer;
     procedure SetCarbs(Value: Integer);
   public
     constructor Create(aOwner: TComponent); override;
     property Units: Integer read GetUnits write SetUnits;
-    property Glucose: Double read GetGlucose write SetGlucose;
+    property Glucose: TBloodGlucose read GetGlucose write SetGlucose;
     property Carbs: Integer read GetCarbs write SetCarbs;
   end;
 
@@ -155,23 +155,23 @@ begin
   settings.OnGlucoseUnitChange := GlucoseUnitChanged;
   GlucoseUnitChanged(Self);
 
-  edtTargetMorning.Text := FormatGlucose(settings.Target[itMorning]);
-  edtTargetDay.Text     := FormatGlucose(settings.Target[itDay]);
-  edtTargetEvening.Text := FormatGlucose(settings.Target[itEvening]);
+  edtTargetMorning.Text := settings.Target[itMorning].Format;
+  edtTargetDay.Text     := settings.Target[itDay].Format;
+  edtTargetEvening.Text := settings.Target[itEvening].Format;
 
   edtCarbRatioMorning.Text := IntToStr(settings.CarbRatio[itMorning]);
   edtCarbRatioDay.Text     := IntToStr(settings.CarbRatio[itDay]);
   edtCarbRatioEvening.Text := IntToStr(settings.CarbRatio[itEvening]);
 
-  edtAbove8.Text  := Format('%.1f', [settings.CorrUnits[8]], TSettings.Format);
-  edtAbove10.Text := Format('%.1f', [settings.CorrUnits[10]], TSettings.Format);
-  edtAbove12.Text := Format('%.1f', [settings.CorrUnits[12]], TSettings.Format);
-  edtAbove14.Text := Format('%.1f', [settings.CorrUnits[14]], TSettings.Format);
-  edtAbove16.Text := Format('%.1f', [settings.CorrUnits[16]], TSettings.Format);
-  edtAbove18.Text := Format('%.1f', [settings.CorrUnits[18]], TSettings.Format);
-  edtAbove20.Text := Format('%.1f', [settings.CorrUnits[20]], TSettings.Format);
-  edtAbove22.Text := Format('%.1f', [settings.CorrUnits[22]], TSettings.Format);
-  edtAbove24.Text := Format('%.1f', [settings.CorrUnits[24]], TSettings.Format);
+  edtAbove8.Text  := Format('%.1f', [settings.CorrUnits[TBloodGlucose.Create(8)]], TSettings.Format);
+  edtAbove10.Text := Format('%.1f', [settings.CorrUnits[TBloodGlucose.Create(10)]], TSettings.Format);
+  edtAbove12.Text := Format('%.1f', [settings.CorrUnits[TBloodGlucose.Create(12)]], TSettings.Format);
+  edtAbove14.Text := Format('%.1f', [settings.CorrUnits[TBloodGlucose.Create(14)]], TSettings.Format);
+  edtAbove16.Text := Format('%.1f', [settings.CorrUnits[TBloodGlucose.Create(16)]], TSettings.Format);
+  edtAbove18.Text := Format('%.1f', [settings.CorrUnits[TBloodGlucose.Create(18)]], TSettings.Format);
+  edtAbove20.Text := Format('%.1f', [settings.CorrUnits[TBloodGlucose.Create(20)]], TSettings.Format);
+  edtAbove22.Text := Format('%.1f', [settings.CorrUnits[TBloodGlucose.Create(22)]], TSettings.Format);
+  edtAbove24.Text := Format('%.1f', [settings.CorrUnits[TBloodGlucose.Create(24)]], TSettings.Format);
 
   if settings.FirstTime then
   begin
@@ -222,7 +222,7 @@ end;
 procedure TfrmMain.Calculate;
 begin
   const glucose = Self.Glucose;
-  if (ToMMOL(glucose) < 4) or (ToMMOL(glucose) > 10) then
+  if (glucose.ToMMOL < 4) or (glucose.ToMMOL > 10) then
     btnGlucose.TextSettings.FontColor := TAlphaColorRec.Darkred
   else
     btnGlucose.TextSettings.FontColor := TAlphaColorRec.Null;
@@ -254,7 +254,7 @@ begin
       EXIT;
 
     const target = Settings.Get.Target[IT];
-    if ToMMOL(glucose) > 8 then
+    if glucose.ToMMOL > 8 then
       Result := Result + Settings.Get.CorrUnits[glucose]
     else
       if glucose < target then
@@ -299,14 +299,14 @@ begin
   lblUnits.Text := IntToStr(Value);
 end;
 
-function TfrmMain.GetGlucose: Double;
+function TfrmMain.GetGlucose: TBloodGlucose;
 begin
-  Result := StrToFloat(btnGlucose.Text, TSettings.Format);
+  Result := TBloodGlucose.Create(StrToFloat(btnGlucose.Text, TSettings.Format));
 end;
 
-procedure TfrmMain.SetGlucose(Value: Double);
+procedure TfrmMain.SetGlucose(Value: TBloodGlucose);
 begin
-  btnGlucose.Text := FormatGlucose(Value);
+  btnGlucose.Text := Value.Format;
 end;
 
 function TfrmMain.GetCarbs: Integer;
@@ -364,16 +364,18 @@ end;
 
 procedure TfrmMain.edtTargetExit(edit: TEdit; time: TInsulinTime; default: Double);
 begin
-  const T = StrToFloatDef(edit.Text, (function(Value: MMOL): Double
-  begin
-    Result := Value;
-    if Settings.Get.GlucoseUnit = guMGDL then
-      Result := MMOL2MGDL(Result);
-  end)(default), TSettings.Format);
+  const T = TBloodGlucose.Create(
+    StrToFloatDef(edit.Text, (function(Value: MMOL): Double
+    begin
+      Result := Value;
+      if Settings.Get.GlucoseUnit = guMGDL then
+        Result := MMOL2MGDL(Result);
+    end)(default), TSettings.Format)
+  );
 
-  edit.Text := FormatGlucose(T);
+  edit.Text := T.Format;
 
-  Settings.Get.Target[time] := StrToFloat(edit.Text, TSettings.Format);
+  Settings.Get.Target[time] := TBloodGlucose.Create(StrToFloat(edit.Text, TSettings.Format));
 end;
 
 procedure TfrmMain.edtTargetMorningExit(Sender: TObject);
@@ -420,7 +422,7 @@ begin
   const E = Sender as TEdit;
   const V = StrToFloatDef(E.Text, 0, TSettings.Format);
   E.Text := Format('%.1f', [V], TSettings.Format);
-  Settings.Get.CorrUnits[E.Tag] := StrToFloat(E.Text, TSettings.Format);
+  Settings.Get.CorrUnits[TBloodGlucose.Create(E.Tag)] := StrToFloat(E.Text, TSettings.Format);
 end;
 
 end.

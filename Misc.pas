@@ -2,16 +2,22 @@ unit Misc;
 
 interface
 
+{-------------------------------- TGlucoseUnit --------------------------------}
+
 type
   TGlucoseUnit = (guMMOL, guMGDL);
 
 const
   GlucoseUnitText: array[TGlucoseUnit] of string = ('mmol/L', 'mg/dL');
 
+{-------------------------------- TInsulinTime --------------------------------}
+
 type
   TInsulinTime = (itMorning, itDay, itEvening);
 
 function InsulinTime: TInsulinTime;
+
+{--------------------------------- MMOL/MGDL ----------------------------------}
 
 type
   MMOL = Double;
@@ -20,10 +26,23 @@ type
 function MMOL2MGDL(Value: MMOL): MGDL;
 function MGDL2MMOL(Value: MGDL): MMOL;
 
-function ToMMOL(Value: Double): MMOL;
-function ToMGDL(Value: Double): MGDL;
+{------------------------------- TBloodGlucose --------------------------------}
 
-function FormatGlucose(Value: Double): string;
+type
+  TBloodGlucose = record
+  private
+    Inner: Double;
+  public
+    constructor Create(Value: Double);
+    function Format: string;
+    function ToMMOL: MMOL;
+    function ToMGDL: MGDL;
+    class operator Equal(const Left: TBloodGlucose; Right: Double): Boolean;
+    class operator GreaterThanOrEqual(const Left: TBloodGlucose; Right: Double): Boolean;
+    class operator Implicit(const Value: TBloodGlucose): Double;
+    class operator LessThan(const Left, Right: TBloodGlucose): Boolean;
+    class operator Subtract(const Left: TBloodGlucose; Right: Double): Double;
+  end;
 
 implementation
 
@@ -53,26 +72,56 @@ begin
   Result := Value / 18.0182;
 end;
 
-function ToMMOL(Value: Double): MMOL;
+constructor TBloodGlucose.Create(Value: Double);
 begin
-  Result := Value;
+  Self.Inner := Value;
+end;
+
+function TBloodGlucose.ToMMOL: MMOL;
+begin
+  Result := Self.Inner;
   if Settings.Get.GlucoseUnit = guMGDL then
-    Result := MGDL2MMOL(Round(Value));
+    Result := MGDL2MMOL(Round(Self.Inner));
 end;
 
-function ToMGDL(Value: Double): MGDL;
+function TBloodGlucose.ToMGDL: MGDL;
 begin
-  Result := Round(Value);
+  Result := Round(Self.Inner);
   if Settings.Get.GlucoseUnit = guMMOL then
-    Result := MMOL2MGDL(Value);
+    Result := MMOL2MGDL(Self.Inner);
 end;
 
-function FormatGlucose(Value: Double): string;
+function TBloodGlucose.Format: string;
 begin
   case Settings.Get.GlucoseUnit of
-    guMMOL: Result := Format('%.1f', [Value], TSettings.Format);
-    guMGDL: Result := Format('%.0f', [Value], TSettings.Format);
+    guMMOL: Result := System.SysUtils.Format('%.1f', [Self.Inner], TSettings.Format);
+    guMGDL: Result := System.SysUtils.Format('%.0f', [Self.Inner], TSettings.Format);
   end;
+end;
+
+class operator TBloodGlucose.Equal(const Left: TBloodGlucose; Right: Double): Boolean;
+begin
+  Result := Left.Inner = Right;
+end;
+
+class operator TBloodGlucose.GreaterThanOrEqual(const Left: TBloodGlucose; Right: Double): Boolean;
+begin
+  Result := left.Inner >= Right;
+end;
+
+class operator TBloodGlucose.Implicit(const Value: TBloodGlucose): Double;
+begin
+  Result := Value.Inner;
+end;
+
+class operator TBloodGlucose.LessThan(const Left, Right: TBloodGlucose): Boolean;
+begin
+  Result := Left.Inner < Right.Inner;
+end;
+
+class operator TBloodGlucose.Subtract(const Left: TBloodGlucose; Right: Double): Double;
+begin
+  Result := Left.Inner - Right;
 end;
 
 end.
