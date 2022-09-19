@@ -10,6 +10,13 @@ type
 const
   GlucoseUnitText: array[TGlucoseUnit] of string = ('mmol/L', 'mg/dL');
 
+{-------------------------------- TInsulinUnit --------------------------------}
+
+type
+  TInsulinUnit = (iuHalf, iuWhole);
+
+function RoundInsulin(Value: Double): Double;
+
 {-------------------------------- TInsulinTime --------------------------------}
 
 type
@@ -51,6 +58,29 @@ uses
   System.SysUtils,
   // Project
   Settings;
+
+function RoundInsulin(Value: Double): Double;
+begin
+  if Value < 0 then
+  begin
+    Result := 0;
+    EXIT;
+  end;
+  Result := Value;
+  const settings = Settings.Get;
+  if settings.InsulinUnit = iuWhole then
+    Result := Round(Result)
+  else if settings.InsulinUnit = iuHalf then
+  begin
+    const frac = Frac(Result);
+    if frac < 0.25  then
+      Result := Int(Result)
+    else if frac > 0.75 then
+      Result := Round(Result)
+    else
+      Result := Int(Result) + 0.5;
+  end;
+end;
 
 function InsulinTime: TInsulinTime;
 begin

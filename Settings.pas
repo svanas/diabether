@@ -18,7 +18,9 @@ type
     FFirstTime: Boolean;
     FDatabase: TDatabase;
     FQuery: TFDQuery;
+
     FOnGlucoseUnitChange: TNotifyEvent;
+    FOnInsulinUnitChange: TNotifyEvent;
 
     function Database: TDatabase;
     function Query: TFDQuery;
@@ -35,6 +37,9 @@ type
 
     function GetGlucoseUnit: TGlucoseUnit;
     procedure SetGlucoseUnit(Value: TGlucoseUnit);
+
+    function GetInsulinUnit: TInsulinUnit;
+    procedure SetInsulinUnit(Value: TInsulinUnit);
   public
     destructor Destroy; override;
     class function Format: TFormatSettings;
@@ -48,6 +53,9 @@ type
 
     property GlucoseUnit: TGlucoseUnit read GetGlucoseUnit write SetGlucoseUnit;
     property OnGlucoseUnitChange: TNotifyEvent read FOnGlucoseUnitChange write FOnGlucoseUnitChange;
+
+    property InsulinUnit: TInsulinUnit read GetInsulinUnit write SetInsulinUnit;
+    property OnInsulinUnitChange: TNotifyEvent read FOnInsulinUnitChange write FOnInsulinUnitChange;
   end;
 
 function Get: TSettings;
@@ -239,19 +247,19 @@ end;
 function TSettings.GetGlucoseUnit: TGlucoseUnit;
 begin
   Result := guMMOL;
-  const F = Query.FindField('GlucoUnit');
+  const F = Query.FindField('GlucoseUnit');
   if Assigned(F) then
     Result := TGlucoseUnit(F.AsInteger);
 end;
 
 procedure TSettings.SetGlucoseUnit(Value: TGlucoseUnit);
 begin
-  const F = Query.FindField('GlucoUnit');
+  const F = Query.FindField('GlucoseUnit');
 
   if not Assigned(F) then
-    if Database.Execute('ALTER TABLE SETTINGS ADD COLUMN GlucoUnit INTEGER') > 0 then
+    if Database.Execute('ALTER TABLE SETTINGS ADD COLUMN GlucoseUnit INTEGER') > 0 then
     begin
-      Database.Execute(System.SysUtils.Format('UPDATE SETTINGS SET GlucoUnit = %d', [Ord(Value)]));
+      Database.Execute(System.SysUtils.Format('UPDATE SETTINGS SET GlucoseUnit = %d', [Ord(Value)]));
       Database.Connection.Close;
       EXIT;
     end;
@@ -267,6 +275,39 @@ begin
   end;
 
   if Assigned(FOnGlucoseUnitChange) then FOnGlucoseUnitChange(Self);
+end;
+
+function TSettings.GetInsulinUnit: TInsulinUnit;
+begin
+  Result := iuHalf;
+  const F = Query.FindField('InsulinUnit');
+  if Assigned(F) then
+    Result := TInsulinUnit(F.AsInteger);
+end;
+
+procedure TSettings.SetInsulinUnit(Value: TInsulinUnit);
+begin
+  const F = Query.FindField('InsulinUnit');
+
+  if not Assigned(F) then
+    if Database.Execute('ALTER TABLE SETTINGS ADD COLUMN InsulinUnit INTEGER') > 0 then
+    begin
+      Database.Execute(System.SysUtils.Format('UPDATE SETTINGS SET InsulinUnit = %d', [Ord(Value)]));
+      Database.Connection.Close;
+      EXIT;
+    end;
+
+  if Assigned(F) then
+  begin
+    Query.Edit;
+    try
+      F.AsInteger := Ord(Value);
+    finally
+      Query.Post;
+    end;
+  end;
+
+  if Assigned(FOnInsulinUnitChange) then FOnInsulinUnitChange(Self);
 end;
 
 end.

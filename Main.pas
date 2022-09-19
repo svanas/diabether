@@ -100,10 +100,12 @@ type
     procedure Calculate;
     procedure edtTargetExit(edit: TEdit; time: TInsulinTime; default: Double);
     function GetButtonTime(btn: TSpeedButton): TInsulinTime;
-    procedure GlucoseUnitChanged(Sender: TObject);
 
-    function GetUnits: Integer;
-    procedure SetUnits(Value: Integer);
+    procedure GlucoseUnitChanged(Sender: TObject);
+    procedure InsulinUnitChanged(Sender: TObject);
+
+    function GetUnits: Double;
+    procedure SetUnits(Value: Double);
 
     function GetGlucose: TBloodGlucose;
     procedure SetGlucose(Value: TBloodGlucose);
@@ -112,7 +114,7 @@ type
     procedure SetCarbs(Value: Integer);
   public
     constructor Create(aOwner: TComponent); override;
-    property Units: Integer read GetUnits write SetUnits;
+    property Units: Double read GetUnits write SetUnits;
     property Glucose: TBloodGlucose read GetGlucose write SetGlucose;
     property Carbs: Integer read GetCarbs write SetCarbs;
   end;
@@ -153,6 +155,7 @@ begin
 
   const settings = Settings.Get;
   settings.OnGlucoseUnitChange := GlucoseUnitChanged;
+  settings.OnInsulinUnitChange := InsulinUnitChanged;
   GlucoseUnitChanged(Self);
 
   edtTargetMorning.Text := settings.Target[itMorning].Format;
@@ -264,10 +267,7 @@ begin
           Result := Result + ((glucose - target) / corrRatio);
       end;
   finally
-    if Result < 0 then
-      Units := 0
-    else
-      Units := Round(Result);
+    Units := RoundInsulin(Result);
   end;
 end;
 
@@ -289,14 +289,22 @@ begin
     I.Text := Format('Above %d %s', [I.Children[0].Tag, text]);
 end;
 
-function TfrmMain.GetUnits: Integer;
+procedure TfrmMain.InsulinUnitChanged(Sender: TObject);
 begin
-  Result := StrToIntDef(lblUnits.Text, 0);
+  Self.Calculate;
 end;
 
-procedure TfrmMain.SetUnits(Value: Integer);
+function TfrmMain.GetUnits: Double;
 begin
-  lblUnits.Text := IntToStr(Value);
+  Result := StrToFloatDef(lblUnits.Text, 0, TSettings.Format);
+end;
+
+procedure TfrmMain.SetUnits(Value: Double);
+begin
+  case Settings.Get.InsulinUnit of
+    iuHalf : lblUnits.Text := Format('%.1f', [Value], TSettings.Format);
+    iuWhole: lblUnits.Text := Format('%.0f', [Value], TSettings.Format);
+  end;
 end;
 
 function TfrmMain.GetGlucose: TBloodGlucose;
