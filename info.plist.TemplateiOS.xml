@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+<%VersionInfoPListKeys%>
+<%ExtraInfoPListKeys%>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>diabether</string>
+			</array>
+			<key>CFBundleURLName</key>
+			<string>com.svanas.diabether</string>
+		</dict>
+	</array>
+	<key>DTSDKBuild</key>
+	<string>19C51</string>
+<%StoryboardInfoPListKey%>
+</dict>
+</plist>
