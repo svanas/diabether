@@ -93,6 +93,8 @@ type
     procedure edtCarbRatioDayExit(Sender: TObject);
     procedure edtCarbRatioEveningExit(Sender: TObject);
     procedure edtAboveExit(Sender: TObject);
+    procedure edtKeyDown(Sender: TObject; var Key: Word;
+      var KeyChar: Char; Shift: TShiftState);
   private
     FDelay: IDelay;
 
@@ -370,6 +372,12 @@ begin
   Self.Calculate;
 end;
 
+procedure TfrmMain.edtKeyDown(Sender: TObject; var Key: Word;
+  var KeyChar: Char; Shift: TShiftState);
+begin
+  if KeyChar = ',' then KeyChar := '.';
+end;
+
 procedure TfrmMain.edtTargetExit(edit: TEdit; time: TInsulinTime; default: Double);
 begin
   const T = TBloodGlucose.Create(
@@ -404,7 +412,7 @@ end;
 procedure TfrmMain.edtCarbRatioKeyDown(Sender: TObject; var Key: Word;
   var KeyChar: Char; Shift: TShiftState);
 begin
-  if KeyChar = '.' then KeyChar := #0
+  if (KeyChar = '.') or (KeyChar = ',') then KeyChar := #0;
 end;
 
 procedure TfrmMain.edtCarbRatioMorningExit(Sender: TObject);
