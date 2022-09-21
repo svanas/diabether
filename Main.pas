@@ -260,7 +260,7 @@ begin
 
     const target = Settings.Get.Target[IT];
     if glucose.ToMMOL > 8 then
-      Result := Result + Settings.Get.CorrUnits[glucose]
+      Result := Result + Settings.Get.CorrUnitsEx(glucose)
     else
       if glucose < target then
       begin

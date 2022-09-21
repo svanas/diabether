@@ -46,6 +46,7 @@ type
 
     function FirstTime: Boolean;
     function CorrRatio(IT: TInsulinTime): Double;
+    function CorrUnitsEx(Glucose: TBloodGlucose): Double;
 
     property Target[Time: TInsulinTime]: TBloodGlucose read GetTarget write SetTarget;
     property CarbRatio[Time: TInsulinTime]: Integer read GetCarbRatio write SetCarbRatio;
@@ -186,6 +187,7 @@ end;
 
 function TSettings.GetCorrUnits(Glucose: TBloodGlucose): Double;
 begin
+  Result := 0;
   if Glucose >= 24 then
     Result := Query.FieldByName('CORR_ABOVE_24').AsFloat
   else if Glucose >= 22 then
@@ -202,8 +204,39 @@ begin
     Result := Query.FieldByName('CORR_ABOVE_12').AsFloat
   else if Glucose >= 10 then
     Result := Query.FieldByName('CORR_ABOVE_10').AsFloat
-  else
+  else if Glucose >= 8 then
     Result := Query.FieldByName('CORR_ABOVE_8').AsFloat;
+end;
+
+function TSettings.CorrUnitsEx(Glucose: TBloodGlucose): Double;
+
+  function getUnits(floorGlucose, floorUnits, ceilUnits: Double): Double;
+  begin
+    Result := floorUnits;
+    if (Result > 0) and (ceilUnits > 0) then
+      Result := Result + (((Glucose - floorGlucose) / 2) * (ceilUnits - floorUnits));
+  end;
+
+begin
+  Result := GetCorrUnits(Glucose);
+  if Glucose >= 24 then
+    EXIT
+  else if Glucose >= 22 then
+    Result := getUnits(22, Result, Query.FieldByName('CORR_ABOVE_24').AsFloat)
+  else if Glucose >= 20 then
+    Result := getUnits(20, Result, Query.FieldByName('CORR_ABOVE_22').AsFloat)
+  else if Glucose >= 18 then
+    Result := getUnits(18, Result, Query.FieldByName('CORR_ABOVE_20').AsFloat)
+  else if Glucose >= 16 then
+    Result := getUnits(16, Result, Query.FieldByName('CORR_ABOVE_18').AsFloat)
+  else if Glucose >= 14 then
+    Result := getUnits(14, Result, Query.FieldByName('CORR_ABOVE_16').AsFloat)
+  else if Glucose >= 12 then
+    Result := getUnits(12, Result, Query.FieldByName('CORR_ABOVE_14').AsFloat)
+  else if Glucose >= 10 then
+    Result := getUnits(10, Result, Query.FieldByName('CORR_ABOVE_12').AsFloat)
+  else if Glucose >= 8 then
+    Result := getUnits(8, Result, Query.FieldByName('CORR_ABOVE_10').AsFloat);
 end;
 
 procedure TSettings.SetCorrUnits(Glucose: TBloodGlucose; Value: Double);
