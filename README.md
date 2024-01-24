@@ -2,6 +2,8 @@
 
 The world's first blockchain-enabled insulin calculator for type 1 diabetics
 
+Click [here](https://medium.com/@svanas/introducing-diabether-e2b5ce983d27) for the whitepaper, or read the below summary.
+
 ## What is Diabether?
 
 Diabether is a mobile app for any patient with type 1 diabetes who uses an insulin pen (not an insulin pump).
